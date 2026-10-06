@@ -5,15 +5,19 @@
     <title>Nuevo plato</title>
 </head>
 <body>
-<form action="/datos" method="post">
-    <input type="text" name="nombre" placeholder="Nombre">
-    <input type="number" name="precio" placeholder="Precio" step="0.01">
+<nav>
+    <a href="/">Listado</a>
+    <a href="/formulario">Nuevo</a>
+</nav>
+<form action="/guarda" method="post">
+    <input type="text" name="nombre" placeholder="Nombre" required>
+    <input type="number" name="precio" placeholder="Precio" step="0.01" required>
     <select name="tipo">
         <option value="PRIMERO">Primero</option>
         <option value="SEGUNDO">Segundo</option>
         <option value="POSTRE">Postre</option>
     </select>
-    <input type="text" name="ingredientes" placeholder="Ingredientes">
+    <input type="text" name="ingredientes" placeholder="Ingredientes separados por comas">
     <button type="submit">Enviar</button>
 </form>
 </body>

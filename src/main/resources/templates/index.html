@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Platos</title>
+</head>
+<body>
+<nav>
+    <a href="/">Listado</a>
+    <a href="/formulario">Nuevo</a>
+</nav>
+<h1>Mi Restaurante</h1>
+<p>Mis platos:</p>
+<ul>
+    <li th:each="plato : ${platos}"
+        th:text="${plato.nombre} + ' - ' + ${plato.precio} + ' € (' + ${plato.tipo} + ')'"></li>
+</ul>
+</body>
+</html>
