@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Nuevo plato</title>
-</head>
-<body>
-<nav>
-    <a href="/">Listado</a>
-    <a href="/formulario">Nuevo</a>
-</nav>
-<form action="/guarda" method="post">
-    <input type="text" name="nombre" placeholder="Nombre" required>
-    <input type="number" name="precio" placeholder="Precio" step="0.01" required>
-    <select name="tipo">
-        <option value="PRIMERO">Primero</option>
-        <option value="SEGUNDO">Segundo</option>
-        <option value="POSTRE">Postre</option>
-    </select>
-    <input type="text" name="ingredientes" placeholder="Ingredientes separados por comas">
-    <button type="submit">Enviar</button>
+<form th:action="@{/guarda}" method="post">
+    <label>Nombre <input type="text" name="nombre" required></label><br>
+    <label>Precio <input type="number" step="0.01" name="precio" required></label><br>
+    <label>Tipo
+        <select name="tipo">
+            <option th:each="t : ${tipos}" th:value="${t}" th:text="${t}"></option>
+        </select>
+    </label><br>
+    <fieldset>
+        <legend>Ingredientes</legend>
+        <label th:each="ing : ${ingredientesDisponibles}">
+            <input type="checkbox" name="ingredientes" th:value="${ing}">
+            <span th:text="${ing}"></span>
+        </label>
+    </fieldset>
+
+    <button type="submit">Guardar</button>
 </form>
-</body>
-</html>

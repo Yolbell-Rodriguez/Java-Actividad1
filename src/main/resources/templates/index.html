@@ -11,9 +11,22 @@
 </nav>
 <h1>Mi Restaurante</h1>
 <p>Mis platos:</p>
-<ul>
-    <li th:each="plato : ${platos}"
-        th:text="${plato.nombre} + ' - ' + ${plato.precio} + ' € (' + ${plato.tipo} + ')'"></li>
-</ul>
+
+<form th:action="@{/filtrar}" method="get">
+    <select name="tipo" onchange="this.form.submit()">
+        <option value="" disabled selected>Filtrar por tipo</option>
+        <option value="PRIMERO">Primero</option>
+        <option value="SEGUNDO">Segundo</option>
+        <option value="POSTRE">Postre</option>
+    </select>
+    <a th:href="@{/}">Ver todos</a>
+</form>
+
+<tr th:each="p, stat : ${platos}">
+    <td th:text="${p.nombre}"></td>
+    <td th:text="${p.precio}"></td>
+    <td><a th:href="@{/detalle/{id}(id=${stat.index})}">Pulsa para ver con detalle o editar</a></td>
+    <br>
+</tr>
 </body>
 </html>

@@ -1,0 +1,11 @@
+<h1 th:text="${plato.nombre}"></h1>
+<p>Precio: <span th:text="${plato.precio}"></span> €</p>
+<p>Tipo: <span th:text="${plato.tipo}"></span></p>
+
+<h3>Ingredientes</h3>
+<ul>
+    <li th:each="ing : ${plato.ingredientes}" th:text="${ing}"></li>
+</ul>
+
+<a href="#"><button type="button">Editar</button></a>
+<a th:href="@{/}"><button type="button">Volver</button></a>
